@@ -46,7 +46,7 @@
                     <div class="dropdown-header bg-light py-2">
                         <div class="fw-semibold">Settings</div>
                     </div>
-                    <a class="dropdown-item pb-2" href="#">
+                    <a class="dropdown-item pb-2" href="{{ route('profile.index') }}">
                         <i class="icon me-2 cil-user"></i>
                         Profile
                     </a>

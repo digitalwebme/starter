@@ -3,8 +3,9 @@
 // use App\Http\Controllers\API\ReportController;
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Artisan;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\User\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,14 @@ Auth::routes();
 
 Route::middleware('auth')->group(function () {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+    Route::group([
+        'prefix' => 'profile',
+        'as' => 'profile.'
+    ], function () {
+        Route::get('/', [ProfileController::class, 'index'])->name('index');
+        Route::post('storePassword', [ProfileController::class, 'storePassword'])->name('password');
+    });
 
     Route::group([
         'prefix' => 'users',
